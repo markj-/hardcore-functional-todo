@@ -26,3 +26,7 @@ function getDom(el) {
 function cgetDom(el) {
   return () => getDom(el);
 }
+
+const listen = curry((event: string, element: HTMLElement) => {
+  return Rx.Observable.fromEvent(element, event);
+});
