@@ -1,3 +1,9 @@
+import Rx from 'rxjs';
+import {
+  curry,
+  compose,
+  map
+} from 'ramda';
 import {
   Maybe,
   IO
@@ -9,9 +15,14 @@ function log(value) {
 }
 
 function $(el) {
-  return IO.of(Maybe(document.querySelectorAll(el)))
+  const els = document.querySelectorAll(el);
+  return els && els.length ? els : null;
 }
 
-function c$(el) {
-  return () => $(el);
+function getDom(el) {
+  return IO.of(Maybe($(el)));
+}
+
+function cgetDom(el) {
+  return () => getDom(el);
 }
