@@ -23,11 +23,9 @@
   },
   "jspm": {
     "dependencies": {
-      "data.either": "npm:data.either@^1.4.0",
-      "data.maybe": "npm:data.maybe@^1.2.2",
-      "data.task": "npm:data.task@^3.1.0",
       "pointfree-fantasy": "npm:pointfree-fantasy@^0.1.3",
-      "ramda": "npm:ramda@^0.21.0"
+      "ramda": "npm:ramda@^0.21.0",
+      "ramda-fantasy": "npm:ramda-fantasy@^0.4.1"
     },
     "devDependencies": {
       "typescript": "npm:typescript@^1.6.2"
