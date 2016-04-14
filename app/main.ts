@@ -38,5 +38,6 @@ const subscribe = curry((success, error, stream) => {
 
 const buttonClickStream = compose(map(map(listen('click'))), map(map(head)), cgetDom('button'));
 
-IO.runIO(buttonClickStream())
-  .map(subscribe(log, log));
+const main = compose(map(subscribe(log, log)), IO.runIO, buttonClickStream);
+
+main();
