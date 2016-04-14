@@ -3,7 +3,8 @@ import {
   curry,
   compose,
   map,
-  head
+  head,
+  prop
 } from 'ramda';
 import {
   Maybe,
@@ -38,6 +39,12 @@ const subscribe = curry((success, error, stream) => {
 
 const buttonClickStream = compose(map(map(listen('click'))), map(map(head)), cgetDom('button'));
 
-const main = compose(map(subscribe(log, log)), IO.runIO, buttonClickStream);
+const getElementValue = prop('value');
+
+const getTodoText = compose(map(map(getElementValue)), map(map(head)), cgetDom('.todo-input'));
+
+const addTodo = compose(map(log), IO.runIO, getTodoText);
+
+const main = compose(map(subscribe(addTodo, log)), IO.runIO, buttonClickStream);
 
 main();
