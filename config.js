@@ -19,6 +19,7 @@ System.config({
     "ramda-fantasy": "npm:ramda-fantasy@0.4.1",
     "rxjs": "npm:rxjs@5.0.0-beta.6",
     "typescript": "npm:typescript@1.8.10",
+    "utils": "app/utils",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
