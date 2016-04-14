@@ -2,7 +2,8 @@ import Rx from 'rxjs';
 import {
   curry,
   compose,
-  map
+  map,
+  head
 } from 'ramda';
 import {
   Maybe,
@@ -34,3 +35,8 @@ const listen = curry((event: string, element: HTMLElement) => {
 const subscribe = curry((success, error, stream) => {
   stream.subscribe(success, error);
 });
+
+const buttonClickStream = compose(map(map(listen('click'))), map(map(head)), cgetDom('button'));
+
+IO.runIO(buttonClickStream())
+  .map(subscribe(log, log));
