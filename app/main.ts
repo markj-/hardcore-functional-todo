@@ -18,9 +18,13 @@ import {
 
 const buttonClickStream = compose(map(map(listen('click'))), map(map(head)), cgetDom('button'));
 
-const getTodoText = compose(map(map(prop('value'))), map(map(head)), cgetDom('.todo-input'));
+const getTodoHtml = (todo: string) => `<li>${todo}</li>`;
 
-const addTodo = compose(map(log), IO.runIO, getTodoText);
+const getTodoInput = compose(map(map(head)), cgetDom('.todo-input'));
+
+const getTodo = compose(map(map(getTodoHtml)), map(map(prop('value'))), getTodoInput);
+
+const addTodo = compose(map(log), IO.runIO, getTodo);
 
 const main = compose(map(map(subscribe(addTodo, log))), buttonClickStream);
 
