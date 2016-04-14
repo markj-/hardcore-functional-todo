@@ -22,6 +22,6 @@ const getTodoText = compose(map(map(prop('value'))), map(map(head)), cgetDom('.t
 
 const addTodo = compose(map(log), IO.runIO, getTodoText);
 
-const main = compose(map(subscribe(addTodo, log)), IO.runIO, buttonClickStream);
+const main = compose(map(map(subscribe(addTodo, log))), buttonClickStream);
 
-main();
+main().runIO();
