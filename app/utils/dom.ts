@@ -7,8 +7,7 @@ import {
 } from 'ramda-fantasy';
 
 function $(el) {
-  const els = document.querySelectorAll(el);
-  return els && els.length ? els : null;
+  return document.querySelectorAll(el) || null;
 }
 
 function getDom(el) {
