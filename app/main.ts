@@ -4,9 +4,6 @@ import {
   head,
   prop
 } from 'ramda';
-import {
-  IO
-} from 'ramda-fantasy';
 import log from 'utils/log';
 import {
   cgetDom
