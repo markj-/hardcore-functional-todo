@@ -17,7 +17,7 @@ import {
   listen
 } from 'utils/streams';
 import runIO from 'utils/run-io';
-import getIOMaybeValue from 'utils/get-io-maybe-value'
+import getIOMaybeValue from 'utils/get-io-maybe-value';
 
 const buttonClickStream = compose(map(map(listen('click'))), map(map(head)), cgetDom('button'));
 
